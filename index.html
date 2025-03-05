@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akash Doifode | Senior Product Manager | AI & Data Innovation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            --accent-color: #a855f7;
+            --text-color-primary: #1e293b;
+            --text-color-secondary: #4b5563;
+            --background-light: #f9fafb;
+            --card-background: rgba(255, 255, 255, 0.8);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background-light);
+            color: var(--text-color-primary);
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-color) var(--background-light);
+            overflow-x: hidden;
+            line-height: 1.5; /* Reduced line-height */
+        }
+
+        body::-webkit-scrollbar {
+            width: 6px;
+        }
+        body::-webkit-scrollbar-track {
+            background: var(--background-light);
+        }
+        body::-webkit-scrollbar-thumb {
+            background: var(--accent-color);
+            border-radius: 10px;
+        }
+
+        .gradient-text {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-container {
+            position: relative;
+            overflow: hidden;
+            padding-top: 3rem; /* Reduced padding */
+            padding-bottom: 3rem; /* Reduced padding */
+        }
+
+        @media (min-width: 1024px) {
+          .section-container{
+              padding-top: 4rem; /* Reduced padding */
+              padding-bottom: 4rem; /* Reduced padding */
+          }
+        }
+
+        .section-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.05) 0%, rgba(255, 255, 255, 0) 70%);
+            pointer-events: none;
+        }
+
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background-color: var(--card-background);
+            border-radius: 1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .card-hover:hover {
+            transform: scale(1.03) translateY(-8px);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.15);
+            border: none;
+        }
+
+        .typing-effect {
+            font-weight: 800;
+            border-right: 4px solid var(--accent-color);
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 3s steps(40, end) forwards, blink-caret 0.75s step-end infinite;
+            width: 100%;
+            display: block;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--accent-color) }
+        }
+
+        .nav-link.active {
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+
+        .skill-item {
+            background-color: var(--card-background);
+            padding: 0.75rem; /* Reduced padding */
+            border-radius: 0.75rem;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-3px); /* Reduced transform distance */
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1); /* Reduced box-shadow */
+        }
+
+        .experience-item, .education-item, .publication-item {
+            background-color: var(--card-background);
+            padding: 1rem; /* Reduced padding */
+            border-radius: 1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .experience-item:hover, .education-item:hover, .publication-item:hover {
+            transform: translateY(-3px); /* Reduced transform distance */
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12); /* Reduced box-shadow */
+        }
+
+        .experience-item ul, .education-item ul, .publication-item ul {
+            margin-top: 0.5rem; /* Reduced margin */
+        }
+
+        .experience-item li, .education-item li, .publication-item li {
+            position: relative;
+            padding-left: 1.5rem; /* Reduced padding */
+        }
+         .experience-item li::before,
+        .education-item li::before,
+        .publication-item li::before{
+              content: '\2022';
+              color: var(--accent-color);
+              font-weight: bold;
+              display: inline-block;
+              width: 1em;
+              margin-left: -1.5rem; /* Reduced margin */
+              position: absolute;
+              left: 0;
+         }
+
+        .footer-link:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+
+        @media (max-width: 640px) {
+            .skill-item {
+                padding: 0.6rem; /* Further reduced padding */
+            }
+            .experience-item, .education-item, .publication-item {
+                padding: 0.8rem; /* Further reduced padding */
+            }
+             .section-container {
+                 padding-top: 2rem; /* Further reduced padding */
+                 padding-bottom: 2rem; /* Further reduced padding */
+             }
+        }
+         @media (min-width: 768px) {
+            .experience-item > h3 + p {
+              margin-top: 0.1rem; /* Reduced margin */
+            }
+          }
+
+        /* NEW CSS FOR MOBILE MENU */
+        #menu {
+            /* Add this to style the menu when it's OPEN */
+        }
+
+        /* Style the menu when it is active (open on mobile) */
+        #menu.active {
+            display: flex;  /*  Show the menu  */
+            flex-direction: column; /* Stack links vertically */
+            position: absolute;  /* Take it out of the flow */
+            top: 100%; /* Position below the navbar */
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95); /* Adjust background */
+            padding: 1rem;
+            align-items: center;
+            z-index: 100; /* Ensure it's above other content */
+
+        }
+
+        #menu.active a {
+            padding: 0.5rem; /* Add some spacing around links */
+            display: block; /* Make links full-width for easier tapping */
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Add margin to the hamburger icon */
+        #menu-toggle {
+            margin: 0.5rem; /* Adjust this value as needed */
+        }
+
+        /* Add margin to the name */
+        #logo-name {
+            margin: 0.5rem;  /* Same margin as the hamburger icon */
+        }
+
+    </style>
+</head>
+<body class="antialiased text-gray-900">
+    <div class="container mx-auto px-6 lg:px-12 py-8 max-w-6xl">
+        <!-- Navigation -->
+        <nav class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md z-50 shadow-md">
+            <div class="container mx-auto flex items-center justify-between py-3">
+                <!-- Logo (optional) -->
+                <div id="logo-name">
+                    <a href="#" class="font-bold text-xl">Akash Doifode</a>
+                </div>
+
+                <!-- Hamburger Menu Icon (Hidden on larger screens) -->
+                <button id="menu-toggle" class="lg:hidden text-gray-700 hover:text-purple-600 focus:outline-none">
+                    <i class="fas fa-bars fa-2x"></i>
+                </button>
+
+                <!-- Navigation Links (Hidden by default on small screens, shown on larger screens) -->
+                <div id="menu" class="hidden lg:flex space-x-6">
+                    <a href="#about" class="nav-link text-gray-700 hover:text-purple-600 transition-colors">About</a>
+                    <a href="#experience" class="nav-link text-gray-700 hover:text-purple-600 transition-colors">Experience</a>
+                    <a href="#skills" class="nav-link text-gray-700 hover:text-purple-600 transition-colors">Skills</a>
+                    <a href="#education" class="nav-link text-gray-700 hover:text-purple-600 transition-colors">Education</a>
+                    <a href="#research" class="nav-link text-gray-700 hover:text-purple-600 transition-colors">Research</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <header id="about" class="text-center mb-10 pt-20 section-container">
+            <div class="w-52 h-52 mx-auto mb-6 rounded-full overflow-hidden shadow-xl border-4 border-white relative animate__animated animate__fadeIn">
+                <div class="absolute inset-0 bg-gradient-to-br from-purple-600 to-blue-500 opacity-40 animate-pulse rounded-full"></div>
+                <img src="https://raw.githubusercontent.com/akashdoifode13/akashdoifode13.github.io/main/1709818143552%20(1).jpeg" alt="Akash Doifode" class="w-full h-full object-cover relative z-10">
+            </div>
+            <h1 class="text-4xl lg:text-5xl font-bold mb-3 gradient-text typing-effect animate__animated animate__fadeIn animate__delay-1s">Akash Doifode</h1>
+            <p class="text-xl lg:text-xl text-gray-600 mb-4 animate__animated animate__fadeIn animate__delay-2s">Senior Product Manager | AI & Data Innovation</p>
+            <div class="flex justify-center space-x-4 text-xl animate__animated animate__fadeIn animate__delay-3s">
+                <a href="mailto:akashdoifode13@gmail.com" class="text-purple-600 hover:text-purple-800 transform hover:scale-125 transition-all">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/akash-doifode-0784b826/" target="_blank" class="text-blue-600 hover:text-blue-800 transform hover:scale-125 transition-all">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/akashdoifode13" target="_blank" class="text-gray-800 hover:text-black transform hover:scale-125 transition-all">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </header>
+
+        <!-- About Me -->
+        <section class="mb-12 section-container animate__animated animate__fadeInUp">
+            <h2 class="text-2xl font-semibold mb-6 text-center gradient-text animate__animated animate__fadeIn">About Me</h2>
+            <div class="p-6 rounded-xl card-hover">
+                <p class="text-md text-gray-700 leading-relaxed">
+                    An experienced Senior Product Manager specializing in leading data-driven product development,
+                    I leverage Large Language Models (LLMs) to create advanced features like Retrieval Augmented
+                    Generation (RAG) and AI Agents. My expertise spans sophisticated recommendation systems,
+                    natural language query engines, and internal language model development. I am passionate about
+                    transforming complex data into impactful products that drive business growth and innovation.
+                    <br><br>
+                    Beyond product management, I am deeply interested in the intersection of technology and economics,
+                    reflected in my research and publications. I believe in continuous learning and staying at the
+                    forefront of technological advancements to build cutting-edge solutions. Let's connect and explore
+                    how we can innovate together!
+                </p>
+            </div>
+        </section>
+
+        <!-- Professional Experience -->
+        <section id="experience" class="mb-12 section-container animate__animated animate__fadeInUp">
+            <h2 class="text-2xl font-semibold mb-6 text-center gradient-text animate__animated animate__fadeIn">Professional Experience</h2>
+            <div class="space-y-6">
+                <div class="experience-item animate__animated animate__fadeInUp animate__delay-1s">
+                    <div class="flex items-center mb-2"> <!-- Added flex container for logo and title -->
+                        <img src="https://raw.githubusercontent.com/akashdoifode13/akashdoifode13.github.io/main/logos/draupplatform_logo.jpeg" alt="Draup Logo" class="w-8 h-8 mr-2"> <!-- Replace [URL to Draup Logo] -->
+                        <h3 class="text-xl font-semibold mb-0 text-accent-color">Senior Product Manager @ Draup</h3>
+                    </div>
+                    <p class="text-gray-600 mb-3">Feb 2022 - Present | Bangalore</p>
+                    <ul class="list-disc list-inside text-gray-700 space-y-1">
+                        <li><span class="font-semibold">Launched Curie</span>, an AI-powered copilot delivering actionable insights for workforce planning, resulting in a <span class="font-semibold">25% increase in user engagement</span> within the first quarter.</li>
+                        <li><span class="font-semibold">Integrated Large Language Models</span> to improve search relevance by 40%, significantly enhancing user satisfaction and search efficiency.</li>
+                        <li><span class="font-semibold">Developed a scalable web-crawling system</span> reducing data acquisition setup time by 99%, enabling faster onboarding of new data sources.</li>
+                        <li><span class="font-semibold">Spearheaded the integration of LLMs</span> like OpenAI GPT and custom models, driving innovation in product features and AI capabilities.</li>
+                        <li><span class="font-semibold">Designed and implemented semantic search engines and profile recommendation systems</span>, leading to a <span class="font-semibold">15% uplift in user conversion rates</span>.</li>
+                    </ul>
+                </div>
+                <div class="experience-item animate__animated animate__fadeInUp animate__delay-2s">
+                    <div class="flex items-center mb-2">  <!-- Added flex container for logo and title -->
+                        <img src="https://raw.githubusercontent.com/akashdoifode13/akashdoifode13.github.io/main/logos/worlddata_ai_logo.jpeg" alt="Zdaly Logo" class="w-8 h-8 mr-2"> <!-- Replace [URL to Zdaly Logo] -->
+                        <h3 class="text-xl font-semibold mb-0 text-accent-color">Product Manager @ Zdaly</h3>
+                    </div>
+                    <p class="text-gray-600 mb-3">Sep 2019 - Feb 2022 | Bangalore</p>
+                    <ul class="list-disc list-inside text-gray-700 space-y-1">
+                        <li><span class="font-semibold">Established a comprehensive Data Science library</span> leveraging AI and ML models, becoming a core asset for product development.</li>
+                        <li><span class="font-semibold">Launched NEWS AI module</span> with advanced NLP techniques, attracting <span class="font-semibold">a new segment of users</span> interested in AI-driven news analysis.</li>
+                        <li><span class="font-semibold">Integrated 2000 new data sources</span> to strengthen platform capabilities, expanding the breadth and depth of available information.</li>
+                        <li><span class="font-semibold">Developed econometric models</span> for strategic business predictions, providing valuable insights for decision-making.</li>
+                        <li><span class="font-semibold">Managed cross-functional teams</span> to drive product innovation, successfully launching <span class="font-semibold">3 major product updates per year</span>.</li>
+                    </ul>
+                </div>
+                <!-- New Experience: Universal Shell Programming Laboratory -->
+                <div class="experience-item animate__animated animate__fadeInUp animate__delay-3s">
+                    <div class="flex items-center mb-2">  <!-- Added flex container for logo and title -->
+                        <img src="https://raw.githubusercontent.com/akashdoifode13/akashdoifode13.github.io/main/logos/USP_Lab.jpeg" alt="Universal Shell Programming Lab Logo" class="w-8 h-8 mr-2"> <!-- Replace [URL to USPL Logo] -->
+                        <h3 class="text-xl font-semibold mb-0 text-accent-color">Associate Manager @ Universal Shell Programming Laboratory, Japan</h3>
+                    </div>
+                    <p class="text-gray-600 mb-3">Dec 2018 – Aug 2019</p>
+                    <ul class="list-disc list-inside text-gray-700 space-y-1">
+                        <li><span class="font-semibold">Led business development efforts</span>, including scheduling client meetings and securing <span class="font-semibold">3 new client engagements</span>.</li>
+                        <li><span class="font-semibold">Analyzed 9.6 million rows of daily geospatial data</span> for a major electric mobility firm, informing strategic decisions on charging station placement and theft detection.</li>
+                        <li>Educated clients on the effective utilization of data and the UNICAGE philosophy.</li>
+                        <li>Prepared Proof of Concept presentations to showcase UNICAGE's capabilities to clients.</li>
+                        <li>Devised a Business Development strategy with emphasis on financial returns and conducted research to identify potential customers.</li>
+                        <li>Collaborated with the Japanese team to manage high-frequency Big Data for clients and deliver outcomes.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills" class="mb-12 section-container animate__animated animate__fadeInUp">
+            <h2 class="text-2xl font-semibold mb-6 text-center gradient-text animate__animated animate__fadeIn">Skills</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="skill-item animate__animated animate__fadeInUp animate__delay-100ms">AI/ML Product Management</div>
+                <div class="skill-item animate__animated animate__fadeInUp animate__delay-300ms">Natural Language Processing (NLP)</div>
+                <div class="skill-item animate__animated animate__fadeInUp animate__delay-400ms">Product Strategy & Roadmapping</div>
+                <div class="skill-item animate__animated animate__fadeInUp animate__delay-500ms">Data Analysis & Interpretation</div>
+                <div class="skill-item animate__animated animate__fadeInUp animate__delay-600ms">Retrieval Augmented Generation (RAG)</div>
+                <div class="skill-item animate__animated animate__fadeInUp animate__delay-700ms">Semantic Search & Recommendations</div>
+                <div class="skill-item animate__animated animate__fadeInUp animate__delay-800ms">Cross-functional Team Leadership</div>
+                <div class="skill-item animate__animated animate__fadeInUp animate__delay-900ms">Agile & Scrum Methodologies</div>
+                <div class="skill-item animate__animated animate__fadeInUp animate__delay-1000ms">Big Data & ETL Technologies</div>
+                <div class="skill-item animate__animated animate__fadeInUp animate__delay-1100ms">User Research & User Experience (UX)</div>
+                <div class="skill-item animate__animated animate__fadeInUp animate__delay-1300ms">Market Analysis & Competitive Research</div>
+                <div class="skill-item animate__animated animate__fadeInUp animate__delay-1400ms">Product Analytics & Metrics</div>
+                <div class="skill-item animate__animated animate__fadeInUp animate__delay-1500ms">Go-to-Market Strategy</div>
+
+                <div class="skill-item animate__animated animate__fadeInUp animate__delay-1600ms">Product Lifecycle Management</div>
+                <div class="skill-item animate__animated animate__fadeInUp animate__delay-1700ms">Technical Product Management</div>
+
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section id="education" class="mb-12 section-container animate__animated animate__fadeInUp">
+            <h2 class="text-2xl font-semibold mb-6 text-center gradient-text animate__animated animate__fadeIn">Education</h2>
+            <div class="space-y-6">
+                <div class="education-item animate__animated animate__fadeInUp animate__delay-1s">
+                     <div class="flex items-center mb-2"> <!-- Added flex container for logo and title -->
+                        <img src="https://raw.githubusercontent.com/akashdoifode13/akashdoifode13.github.io/main/logos/iimindore_logo.jpeg" alt="IIM Indore Logo" class="w-8 h-8 mr-2"> <!-- Replace [URL to IIM Indore Logo] -->
+                       <h3 class="text-xl font-semibold text-accent-color mb-1">Master of Business Administration (MBA)</h3>
+                     </div>
+                    <p class="text-gray-600">Indian Institute of Management (IIM) Indore | 2018</p>
+                    <p class="text-gray-500 mt-1">Specialization: <span class="font-semibold">Strategic Management and Business Analytics</span></p>
+                </div>
+                <div class="education-item animate__animated animate__fadeInUp animate__delay-2s">
+                     <div class="flex items-center mb-2"> <!-- Added flex container for logo and title -->
+                        <img src="https://raw.githubusercontent.com/akashdoifode13/akashdoifode13.github.io/main/logos/GIPE_logo.jpeg" alt="GIPE Logo" class="w-8 h-8 mr-2"> <!-- Replace [URL to GIPE Logo] -->
+                        <h3 class="text-xl font-semibold text-accent-color mb-1">Master of Science in Economics (MSc Economics)</h3>
+                     </div>
+                    <p class="text-gray-600">Gokhale Institute of Politics and Economics | 2016</p>
+                    <p class="text-gray-500 mt-1">Research Focus: <span class="font-semibold">International Trade and Econometrics</span></p>
+                </div>
+                <div class="education-item animate__animated animate__fadeInUp animate__delay-3s">
+                     <div class="flex items-center mb-2"> <!-- Added flex container for logo and title -->
+                        <img src="https://raw.githubusercontent.com/akashdoifode13/akashdoifode13.github.io/main/logos/VIT_logo.jpeg" alt="VIT Pune Logo" class="w-8 h-8 mr-2"> <!-- Replace [URL to VIT Pune Logo] -->
+                        <h3 class="text-xl font-semibold text-accent-color mb-1">B.Tech, Electronics & Telecommunication (E&TC)</h3>
+                     </div>
+                    <p class="text-gray-600">VIT Pune | 2014</p>
+                    <p class="text-gray-500 mt-1">Specialization: <span class="font-semibold">Embedded Systems and Signal Processing</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research & Publications -->
+        <section id="research" class="mb-12 section-container animate__animated animate__fadeInUp">
+            <h2 class="text-2xl font-semibold mb-6 text-center gradient-text animate__animated animate__fadeIn">Research & Publications</h2>
+            <div class="space-y-4">
+                <div class="publication-item animate__animated animate__fadeInUp animate__delay-1s">
+                    <h3 class="text-lg font-semibold text-accent-color mb-1">Trade Potential Analysis with RCEP Members</h3>
+                    <p class="text-gray-600 mb-3">Published in Vision Journal | 2023</p>
+                    <a href="https://journals.sagepub.com/doi/10.1177/09722629231193543" class="text-purple-600 hover:underline font-semibold">View Publication <i class="fas fa-external-link-alt ml-1 text-sm align-baseline"></i></a>
+                </div>
+                <div class="publication-item animate__animated animate__fadeInUp animate__delay-2s">
+                    <h3 class="text-lg font-semibold text-accent-color mb-1">Trade Effects of U.S. China Trade War</h3>
+                    <p class="text-gray-600 mb-3">SSRN Research Paper | 2020</p>
+                    <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3609033" class="text-purple-600 hover:underline font-semibold">View Publication <i class="fas fa-external-link-alt ml-1 text-sm align-baseline"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center text-gray-600 mt-8 py-6 border-t border-gray-200">
+            <p>© 2025 Akash Doifode. All Rights Reserved.</p>
+
+        </footer>
+    </div>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            // Smooth scrolling
+            document.querySelectorAll('.nav-link[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+                    this.classList.add('active');
+
+                    // Close the menu after clicking on a link (if it's open)
+                    const menu = document.getElementById('menu');
+                    const menuToggle = document.getElementById('menu-toggle');
+                    if (menu.classList.contains('active')) {
+                        menu.classList.remove('active');
+                        menu.classList.add('hidden');  // Hide the menu again
+                    }
+                });
+            });
+
+            // Scroll Reveal
+            ScrollReveal({ reset: false });
+
+            ScrollReveal().reveal('.section-container', {
+                delay: 200,
+                duration: 800,
+                easing: 'ease-out',
+                origin: 'bottom',
+                distance: '30px',
+                interval: 100
+            });
+
+            ScrollReveal().reveal('.skill-item', {
+                delay: 300,
+                duration: 700,
+                easing: 'ease-out',
+                origin: 'bottom',
+                distance: '20px',
+                interval: 80
+            });
+
+            ScrollReveal().reveal('.experience-item, .education-item, .publication-item', {
+                delay: 400,
+                duration: 900,
+                easing: 'ease-out',
+                origin: 'bottom',
+                distance: '30px',
+                interval: 150
+            });
+            ScrollReveal().reveal('.animate__fadeIn', {
+               delay: 100,
+               duration: 800,
+               easing: 'ease-in-out',
+               opacity: 0,
+               reset: false
+           });
+
+
+            document.querySelector('.nav-link[href="#about"]').classList.add('active');
+
+            window.addEventListener('scroll', () => {
+                const sections = document.querySelectorAll('.section-container');
+                const navLinks = document.querySelectorAll('.nav-link');
+                let currentSection = '';
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 80;
+                    const sectionHeight = section.offsetHeight;
+                    if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                        currentSection = section.id;
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${currentSection}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+             // Hamburger Menu Toggle
+            const menuToggle = document.getElementById('menu-toggle');
+            const menu = document.getElementById('menu');
+
+            menuToggle.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+                menu.classList.toggle('flex'); // Ensure it displays as flex when open
+                menu.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
