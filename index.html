@@ -47,6 +47,11 @@
             --text-color-secondary: #4b5563;
             --background-light: #f9fafb;
             --card-background: rgba(255, 255, 255, 0.8);
+            --glass-bg: rgba(255, 255, 255, 0.8);
+            --glass-border: rgba(255, 255, 255, 0.18);
+            --card-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+            --hover-transform: translateY(-8px) scale(1.02);
+            --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         html {
@@ -85,6 +90,16 @@
             overflow: hidden;
             padding-top: 3rem; /* Reduced padding */
             padding-bottom: 3rem; /* Reduced padding */
+            opacity: 0;
+            transform: translateY(20px);
+            transition: var(--transition-smooth);
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        .section-container.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         @media (min-width: 1024px) {
@@ -106,16 +121,18 @@
         }
 
         .card-hover {
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            background-color: var(--card-background);
-            border-radius: 1rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            background: var(--glass-bg);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--card-shadow);
+            transition: var(--transition-smooth);
         }
 
         .card-hover:hover {
-            transform: scale(1.03) translateY(-8px);
-            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.15);
-            border: none;
+            transform: var(--hover-transform);
+            box-shadow: 0 15px 40px -5px rgba(168, 85, 247, 0.3);
+            border-color: rgba(168, 85, 247, 0.3);
         }
 
         .typing-effect {
@@ -138,9 +155,28 @@
             50% { border-color: var(--accent-color) }
         }
 
-        .nav-link.active {
-            font-weight: 600;
-            color: var(--accent-color);
+        .nav-link {
+            position: relative;
+            padding-bottom: 0.25rem;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary-gradient);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            transform: scaleX(1);
+            transform-origin: left;
         }
 
         .skill-item {
@@ -150,11 +186,33 @@
             text-align: center;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .skill-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-gradient);
+            z-index: -1;
+            transition: var(--transition-smooth);
+            opacity: 0;
+            transform: translateY(100%);
         }
 
         .skill-item:hover {
-            transform: translateY(-3px); /* Reduced transform distance */
-            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1); /* Reduced box-shadow */
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .skill-item:hover::before {
+            transform: translateY(0);
+            opacity: 1;
         }
 
         .experience-item, .education-item, .publication-item {
@@ -251,6 +309,176 @@
             margin: 0.5rem;  /* Same margin as the hamburger icon */
         }
 
+        /* Enhanced Hero Image */
+        .hero-image-container {
+            position: relative;
+            transition: var(--transition-smooth);
+        }
+
+        .hero-image-container:hover {
+            transform: scale(1.05);
+        }
+
+        .hero-image-container::after {
+            content: '';
+            position: absolute;
+            inset: -5px;
+            background: var(--primary-gradient);
+            border-radius: inherit;
+            z-index: -1;
+            opacity: 0;
+            transition: var(--transition-smooth);
+        }
+
+        .hero-image-container:hover::after {
+            opacity: 1;
+        }
+
+        /* Enhanced Social Links */
+        .social-link {
+            position: relative;
+            transition: var(--transition-smooth);
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            inset: -8px;
+            background: var(--primary-gradient);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: var(--transition-smooth);
+        }
+
+        .social-link:hover::before {
+            opacity: 0.1;
+            transform: scale(1);
+        }
+
+        /* Floating Animation for Cards */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .floating {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        /* Scroll Progress Indicator */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--primary-gradient);
+            transform-origin: left;
+            z-index: 9999;
+        }
+
+        /* Animated Background Graphics */
+        .background-graphics {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .background-graphics::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(168, 85, 247, 0.03) 0%, transparent 50%);
+            animation: rotate 30s linear infinite;
+        }
+
+        .geometric-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .geometric-shapes div {
+            position: absolute;
+            border: 2px solid rgba(168, 85, 247, 0.1);
+            border-radius: 50%;
+        }
+
+        .shape-1 {
+            top: 20%;
+            left: 10%;
+            width: 60px;
+            height: 60px;
+            animation: float-slow 6s ease-in-out infinite;
+        }
+
+        .shape-2 {
+            top: 60%;
+            right: 15%;
+            width: 100px;
+            height: 100px;
+            animation: float-slow 8s ease-in-out infinite;
+        }
+
+        .shape-3 {
+            bottom: 10%;
+            left: 30%;
+            width: 40px;
+            height: 40px;
+            animation: float-slow 7s ease-in-out infinite;
+        }
+
+        .gradient-blob {
+            position: absolute;
+            filter: blur(40px);
+            opacity: 0.1;
+            mix-blend-mode: screen;
+        }
+
+        .blob-1 {
+            top: 10%;
+            right: 20%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle at center, #a855f7 0%, transparent 70%);
+            animation: blob-move 15s ease-in-out infinite;
+        }
+
+        .blob-2 {
+            bottom: 20%;
+            left: 15%;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle at center, #2563eb 0%, transparent 70%);
+            animation: blob-move 18s ease-in-out infinite reverse;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes float-slow {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+
+        @keyframes blob-move {
+            0% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0, 0) scale(1); }
+        }
+
     </style>
 </head>
 <body class="antialiased text-gray-900">
@@ -281,23 +509,23 @@
 
         <!-- Hero Section -->
         <header id="about" class="text-center mb-10 pt-20 section-container">
-            <div class="w-52 h-52 mx-auto mb-6 rounded-full overflow-hidden shadow-xl border-4 border-white relative animate__animated animate__fadeIn">
+            <div class="w-52 h-52 mx-auto mb-6 rounded-full overflow-hidden shadow-xl border-4 border-white relative animate__animated animate__fadeIn hero-image-container">
                 <div class="absolute inset-0 bg-gradient-to-br from-purple-600 to-blue-500 opacity-40 animate-pulse rounded-full"></div>
                 <img src="https://raw.githubusercontent.com/akashdoifode13/akashdoifode13.github.io/refs/heads/master/1709818143552%20(1).jpeg" alt="Akash Doifode" class="w-full h-full object-cover relative z-10">
             </div>
             <h1 class="text-4xl lg:text-5xl font-bold mb-3 gradient-text typing-effect animate__animated animate__fadeIn animate__delay-1s">Akash Doifode</h1>
             <p class="text-xl lg:text-xl text-gray-600 mb-4 animate__animated animate__fadeIn animate__delay-2s">Senior Product Manager | AI & Data Innovation</p>
             <div class="flex justify-center space-x-4 text-xl animate__animated animate__fadeIn animate__delay-3s">
-                <a href="mailto:akashdoifode13@gmail.com" class="text-purple-600 hover:text-purple-800 transform hover:scale-125 transition-all">
+                <a href="mailto:akashdoifode13@gmail.com" class="text-purple-600 hover:text-purple-800 transform hover:scale-125 transition-all social-link">
                     <i class="fas fa-envelope"></i>
                 </a>
-                <a href="https://www.linkedin.com/in/akash-doifode-0784b826/" target="_blank" class="text-blue-600 hover:text-blue-800 transform hover:scale-125 transition-all">
+                <a href="https://www.linkedin.com/in/akash-doifode-0784b826/" target="_blank" class="text-blue-600 hover:text-blue-800 transform hover:scale-125 transition-all social-link">
                     <i class="fab fa-linkedin"></i>
                 </a>
-                <a href="https://github.com/akashdoifode13" target="_blank" class="text-gray-800 hover:text-black transform hover:scale-125 transition-all">
+                <a href="https://github.com/akashdoifode13" target="_blank" class="text-gray-800 hover:text-black transform hover:scale-125 transition-all social-link">
                     <i class="fab fa-github"></i>
                 </a>
-                 <a href="https://aieconomist.streamlit.app/" target="_blank" class="text-gray-800 hover:text-black transform hover:scale-125 transition-all">
+                 <a href="https://aieconomist.streamlit.app/" target="_blank" class="text-gray-800 hover:text-black transform hover:scale-125 transition-all social-link">
                     <i class="fas fa-rocket"></i>
                 </a>
             </div>
@@ -539,6 +767,24 @@
                reset: false
            });
 
+            // Add to your existing DOMContentLoaded event listener
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.section-container').forEach(section => {
+                observer.observe(section);
+            });
 
             document.querySelector('.nav-link[href="#about"]').classList.add('active');
 
